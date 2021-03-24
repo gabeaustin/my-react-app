@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../App.css"
+import Axios from "axios";
+import axios from "axios";
+
 
 export default function CreatePost() {
 
@@ -10,8 +13,14 @@ export default function CreatePost() {
 
     // this makes request to the backend
     const submitPost = () => {
+        Axios.post("http://localhost:3306/api/create", {userName: userName, title: title, text: text})
 
-    }
+        axios.post({userName: "hi", title: "this my title", text: "text long"})
+        .then((response) => {console.log(response)})
+        .catch((error) => {console.log(error)})
+    };
+
+    
 
     return (
             <div className="CreatePost">
