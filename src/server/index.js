@@ -15,9 +15,7 @@ const PORT = 3001;
     );
 }); */
 
-app.get("/", (req, res) => {
-
-});
+app.get("/", (req, res) => {});
 
 app.post("/api/create", (req, res) => {
     db.query(
@@ -29,11 +27,6 @@ app.post("/api/create", (req, res) => {
         }
     };
 });
-
-
-db.query(
-    "INSERT INTO posts (title, postText, userName) VALUES ('dictum', 'Ut dictum enim.', 'meme')"
-);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}.`);

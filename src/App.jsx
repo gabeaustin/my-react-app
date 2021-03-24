@@ -1,25 +1,42 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import MainPage from "./components/MainPage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreatePost from "./components/CreatePost";
+import Home from "./components/Home";
 
-const mainPgTitle = () => <h1>Main Page</h1>
-const createPgTitle = () => <h1>Create Page</h1>
+export default function App() {
+  return (
+        <Router>
+            <div>
+                <nav className="navbar">
+                <ul>
+                    <li>
+                        <Link to="/" className="links">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/createpost" className="links">Create Post</Link>
+                    </li>
+                </ul>
+                </nav>
 
-const App = () => {
-    return (
-        <>
-            <Router>
-                <div className="navbar">
-                    <div className="links">
-                        <Link to = "/" exact>Main Page</Link>
-                        <Link to = {{pathname: "/createpost"}}>Create Post</Link>
-                    </div>
-                </div>
-                {/* <Route path = "/" exact render={(props) => <MainPage />} /> */}
-            </Router>
-        </>
-    );
-};
+                {/* A <Switch> looks through its children <Route>s and
+                    renders the first one that matches the current URL. */}
+                <Switch>
+                    <Route path="/createpost">
+                        <CreatePost />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+  );
+}
 
-export default App;
+function homePage() {
+  return <h6>Home</h6>;
+}
+
+function createPost() {
+  return <h2>Create Post</h2>;
+}
